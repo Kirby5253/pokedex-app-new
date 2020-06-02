@@ -57,6 +57,7 @@ button:hover {
 	width: 80%;
 	font-size: 35px;
 	letter-spacing: 10px;
+	cursor: pointer;
 }
 
 #modal-container {
