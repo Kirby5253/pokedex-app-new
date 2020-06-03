@@ -22,19 +22,25 @@ body {
 	text-align: center;
 	letter-spacing: 5px;
 	align-content: center;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 110px;
+	margin-right: 100px;
 }
 
 h1 {
 	font-size: 50px;
-	margin: 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
 	color: #ffc700;
 	-webkit-text-stroke: 0.5px #355aa9;
 	-webkit-text-fill-color: #ffc700;
 }
-.big-boys {
-	font-weight: 700;
+
+h3 {
+	font-size: 30px;
+	margin: 0;
+	color: #ffc700;
+	-webkit-text-stroke: 0.5px #355aa9;
+	-webkit-text-fill-color: #ffc700;
 }
 
 ul {
@@ -42,6 +48,18 @@ ul {
 	background-color: rgba(46, 46, 46, 0.89);
 	border-radius: 15px;
 	padding: 5px;
+}
+
+#modal-container {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+	background: rgb(218, 218, 218);
+	max-width: 700px;
+	text-align: left;
+	border-radius: 40px;
+	margin-left: 10px;
 }
 
 button {
@@ -67,71 +85,19 @@ button:hover {
 	background: rgb(19, 19, 19);
 }
 
-#modal-container {
-	display: none;
-}
-
-#modal-container.is-visible {
-	position: fixed;
-	padding: 10px;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	/* to show it above other content */
-	z-index: 999;
-	/* to allow scrolling if the screen is not high enough */
-	overflow: auto;
-	/* this is used to center the modal */
-	display: -ms-grid;
-	display: grid;
-	text-align: center;
-}
-
-.modal {
-	margin: auto;
-	display: inline-block;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	background: rgb(218, 218, 218);
-	padding: 20px;
-	width: 100%;
-	max-width: 700px;
-	text-align: left;
-	border-radius: 40px;
-}
-
-.modal-close {
-	float: right;
-	border: 0;
+.close {
 	width: 10%;
 	height: 10%;
-	background: none;
+	padding-right: 100px;
 	color: #dc0a2d;
-	text-decoration: underline;
-	margin-right: 20px;
-	font-size: 20px;
-	font-family: "Lato";
-	letter-spacing: 0;
 }
 
-.modal-close:hover {
-	float: right;
+.close:hover {
 	border: 0;
-	width: 10%;
-	height: 10%;
 	cursor: pointer;
 	-webkit-appearance: none;
 	background: #dc0a2d;
 	color: white;
-	margin-right: 20px;
-	font-size: 20px;
-	font-family: "Lato";
-	letter-spacing: 0;
-	text-decoration: none;
 }
 
 .pokemon-name {
@@ -149,19 +115,7 @@ img {
 		margin-right: 10px;
 	}
 	h1 {
-		margin: auto;
 		font-size: 25px;
-	}
-	button {
-		border-width: 7px;
-		font-size: 15px;
-		height: 50px;
-	}
-	button:hover {
-		letter-spacing: 5px;
-		border-width: 7px;
-		font-size: 15px;
-		height: 50px;
 	}
 	.modal {
 		font-size: 10px;

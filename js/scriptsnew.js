@@ -81,30 +81,35 @@ var pokemonRepository = (function() {
 	function showModal(pokemon) {
 		$modalContainer.html('');
 
-		var $modal = $('<div class="modal"></div>');
-		$modalContainer.append($modal);
+		var $modalDialog = $('<div class = "modal-dialog modal-dialog-centered" role="document"></div>');
+		$modalContainer.append($modalDialog);
 
-		var $modalName = $('<h1 class="pokemon-name">' + pokemon.name + '</h1>');
-		$('.modal').append($modalName);
+		var $modalContent = $('<div class="modal-content"></div>');
+		$modalDialog.append($modalContent);
+
+		var $modalHeader = $('<div class="modal-header"></div>');
+		$modalContent.append($modalHeader);
+
+		var $modalName = $('<h3 class="pokemon-name modal-title" >' + pokemon.name + '</h3>');
+		$modalHeader.append($modalName);
+
+		var $closeButtonElement = $(
+			'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+		);
+		$modalHeader.append($closeButtonElement);
+
+		var $modalBody = $('<div class="modal-body"></div>');
+		$modalContent.append($modalBody);
 
 		var $modalPicture = $('<img class="pokemon-picture"/>');
 		$modalPicture.attr('src', pokemon.imageUrl);
+		$modalBody.append($modalPicture);
 
 		var $modalHeight = $('<p>Height: ' + pokemon.height / 10 + ' meters</p>');
+		$modalBody.append($modalHeight);
 
 		var $modalWeight = $('<p>Weight: ' + (0.22 * pokemon.weight).toFixed(2) + ' pounds</p>');
-
-		// Closes modal with close button
-		var $closeButtonElement = $('<button class="modal-close">Close</button>');
-		$($closeButtonElement).click(function() {
-			hideModal();
-		});
-
-		$modal.append($closeButtonElement);
-		$modal.append($modalName);
-		$modal.append($modalPicture);
-		$modal.append($modalHeight);
-		$modal.append($modalWeight);
+		$modalBody.append($modalWeight);
 
 		$modalContainer.addClass('is-visible');
 	}
