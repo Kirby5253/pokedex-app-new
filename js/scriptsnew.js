@@ -2,7 +2,7 @@ var pokemonRepository = (function() {
 	var pokemonArray = [];
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	var $pokemonList = $('.pokemon-list');
-	var $modalContainer = $('.modal-container');
+	var $modalContainer = $('#modalContainer');
 
 	function add(pokemon) {
 		pokemonArray.push(pokemon);
@@ -16,21 +16,22 @@ var pokemonRepository = (function() {
 		var $listItem = $('<li></li>');
 		$pokemonList.append($listItem);
 
-		var $pokemonButton = $(
+		var $button = $(
 			'<button type="button" class="pokemon-name pokemonSelectorButton" >' + pokemon.name + '</button>'
 		);
 
-		$listItem.append($pokemonButton);
+		$listItem.append($button);
 
-		$pokemonButton.click(function(){
-			return showDetails;
-		})
+		$button.on('click', function() {
+			showDetails;
+			console.log(showDetails);
+		});
 	}
 
 	function loadList() {
-		return $.ajax(apiUrl)
-			.then(function(item) {
-				$.each(item.results, function(index, item) {
+		return $.ajax(apiUrl, { dataType: 'json' })
+			.then(function(responseJSON) {
+				responseJSON.results.forEach(function(item) {
 					var pokemon = {
 						name: item.name,
 						detailsUrl: item.url
@@ -45,7 +46,7 @@ var pokemonRepository = (function() {
 
 	function loadDetails(pokemon) {
 		var url = pokemon.detailsUrl;
-		return $.ajax(url)
+		$.ajax(apiUrl, { dataType: 'json' })
 			.then(function(details) {
 				// Now we add the details to the item
 				pokemon.imageUrl = details.sprites.front_default;
@@ -56,14 +57,6 @@ var pokemonRepository = (function() {
 				console.error(e);
 			});
 	}
-
-	function showDetails(pokemon) {
-		pokemonRepository.loadDetails(pokemon).then(function() {
-			console.log(pokemon);
-			pokemonRepository.showModal(pokemon);
-		});
-	}
-	
 
 	function showModal(pokemon) {
 		$modalContainer.html('');
@@ -81,7 +74,9 @@ var pokemonRepository = (function() {
 
 		// Closes modal with close button
 		var $closeButtonElement = '<button class="modal-close">Close</button>';
-		$('.modal-close').click(hideModal);
+		$closeButtonElement.on('click', function() {
+			hideModal;
+		});
 
 		$modal.append($closeButtonElement);
 		$modal.append($modalName);
@@ -121,8 +116,7 @@ var pokemonRepository = (function() {
 		showModal: showModal,
 		loadList: loadList,
 		loadDetails: loadDetails,
-		hideModal: hideModal,
-		showDetails: showDetails
+		hideModal: hideModal
 	};
 })();
 
@@ -134,5 +128,6 @@ pokemonRepository.loadList().then(function() {
 
 function showDetails(pokemon) {
 	pokemonRepository.loadDetails(pokemon).then(function() {
-		console.log(pokemon);
-		pokemonRepo
+		pokemonRepository.showModal(pokemon);
+	});
+}
