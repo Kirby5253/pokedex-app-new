@@ -16,15 +16,12 @@ var pokemonRepository = (function() {
 		var $listItem = $('<li></li>');
 		$pokemonList.append($listItem);
 
-		var $button = $(
-			'<button type="button" class="pokemon-name pokemonSelectorButton" >' + pokemon.name + '</button>'
-		);
-
+		var $button = $('<button class="pokemon-name pokemonSelectorButton">' + pokemon.name + '</button>')
 		$listItem.append($button);
 
-		$button.on('click', function() {
-			showDetails;
-			console.log(showDetails);
+		$button.click(function() {
+			showDetails(pokemon);
+			console.log(showDetails(pokemon));
 		});
 	}
 
@@ -39,7 +36,7 @@ var pokemonRepository = (function() {
 					add(pokemon);
 				});
 			})
-			.catch(function(e) {
+			.fail(function(e) {
 				console.error(e);
 			});
 	}
@@ -53,9 +50,18 @@ var pokemonRepository = (function() {
 				pokemon.height = details.height;
 				pokemon.weight = details.weight;
 			})
-			.catch(function(e) {
+			.fail(function(e) {
 				console.error(e);
 			});
+	}
+
+	function showDetails(pokemon) {
+		pokemonRepository.loadDetails(pokemon).then(function() {
+			console.log(pokemon);
+			return pokemon;
+		}).then(function(pokemon){
+			showModal(pokemon);
+		});
 	}
 
 	function showModal(pokemon) {
@@ -126,8 +132,4 @@ pokemonRepository.loadList().then(function() {
 	});
 });
 
-function showDetails(pokemon) {
-	pokemonRepository.loadDetails(pokemon).then(function() {
-		pokemonRepository.showModal(pokemon);
-	});
-}
+
