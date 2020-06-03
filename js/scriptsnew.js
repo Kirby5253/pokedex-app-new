@@ -16,7 +16,7 @@ var pokemonRepository = (function() {
 		var $listItem = $('<li></li>');
 		$pokemonList.append($listItem);
 
-		var $button = $('<button class="pokemon-name pokemonSelectorButton">' + pokemon.name + '</button>')
+		var $button = $('<button class="pokemon-name pokemonSelectorButton">' + pokemon.name + '</button>');
 		$listItem.append($button);
 
 		$button.click(function() {
@@ -56,11 +56,8 @@ var pokemonRepository = (function() {
 	}
 
 	function showDetails(pokemon) {
-		loadDetails(pokemon).then(function() {
-			console.log(pokemon);
-			return pokemon;
-		}).then(function(pokemon){
-			showModal(pokemon);
+		pokemonRepository.loadDetails(pokemon).then(function() {
+			pokemonRepository.showModal(pokemon);
 		});
 	}
 
@@ -131,5 +128,3 @@ pokemonRepository.loadList().then(function() {
 		pokemonRepository.addListItem(pokemon);
 	});
 });
-
-
