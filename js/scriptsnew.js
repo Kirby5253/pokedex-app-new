@@ -2,7 +2,7 @@ var pokemonRepository = (function() {
 	var pokemonArray = [];
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	var $pokemonList = $('.pokemon-list');
-	var $modalContainer = $('#modalContainer');
+	var $modalContainer = $('#modal-container');
 
 	function add(pokemon) {
 		pokemonArray.push(pokemon);
@@ -21,13 +21,13 @@ var pokemonRepository = (function() {
 
 		$button.click(function() {
 			showDetails(pokemon);
-			console.log(showDetails(pokemon));
 		});
 	}
 
 	function loadList() {
-		return $.ajax(apiUrl, { dataType: 'json' })
-			.then(function(responseJSON) {
+		return $.ajax(apiUrl, {
+			dataType: 'json',
+			success: function(responseJSON) {
 				responseJSON.results.forEach(function(item) {
 					var pokemon = {
 						name: item.name,
@@ -35,38 +35,53 @@ var pokemonRepository = (function() {
 					};
 					add(pokemon);
 				});
-			})
-			.fail(function(e) {
-				console.error(e);
-			});
+			}
+		}).fail(function(e) {
+			console.error(e);
+		});
 	}
 
 	function loadDetails(pokemon) {
 		var url = pokemon.detailsUrl;
-		$.ajax(apiUrl, { dataType: 'json' })
+		return $.ajax(url, {
+			dataType: 'json'
+		})
+			.then(function(responseJSON) {
+				return responseJSON;
+			})
 			.then(function(details) {
-				// Now we add the details to the item
 				pokemon.imageUrl = details.sprites.front_default;
 				pokemon.height = details.height;
 				pokemon.weight = details.weight;
 			})
-			.fail(function(e) {
+			.catch(function(e) {
 				console.error(e);
 			});
 	}
 
 	function showDetails(pokemon) {
-		pokemonRepository.loadDetails(pokemon).then(function() {
-			pokemonRepository.showModal(pokemon);
-		});
+		pokemonRepository
+			.loadDetails(pokemon)
+			.then(function() {
+				console.log(pokemon);
+				return pokemon;
+			})
+			.then(function(pokemon) {
+				showModal(pokemon);
+			})
+			.catch(function(e) {
+				console.error(e);
+			});
 	}
 
 	function showModal(pokemon) {
 		$modalContainer.html('');
 
 		var $modal = $('<div class="modal"></div>');
+		$modalContainer.append($modal);
 
 		var $modalName = $('<h1 class="pokemon-name">' + pokemon.name + '</h1>');
+		$('.modal').append($modalName);
 
 		var $modalPicture = $('<img class="pokemon-picture>');
 		$modalPicture.src = pokemon.imageUrl;
@@ -77,7 +92,7 @@ var pokemonRepository = (function() {
 
 		// Closes modal with close button
 		var $closeButtonElement = '<button class="modal-close">Close</button>';
-		$closeButtonElement.on('click', function() {
+		$('.modal-close').click(function() {
 			hideModal;
 		});
 
@@ -86,7 +101,6 @@ var pokemonRepository = (function() {
 		$modal.append($modalPicture);
 		$modal.append($modalHeight);
 		$modal.append($modalWeight);
-		$modalContainer.append($modal);
 
 		$modalContainer.addClass('is-visible');
 	}
