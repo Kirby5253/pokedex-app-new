@@ -3,6 +3,7 @@ var pokemonRepository = (function() {
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	var $pokemonList = $('.pokemon-list');
 	var $modalContainer = $('#modal-container');
+	var $modal = $('.modal');
 
 	function add(pokemon) {
 		pokemonArray.push(pokemon);
@@ -63,7 +64,6 @@ var pokemonRepository = (function() {
 		pokemonRepository
 			.loadDetails(pokemon)
 			.then(function() {
-				console.log(pokemon);
 				return pokemon;
 			})
 			.then(function(pokemon) {
@@ -118,10 +118,10 @@ var pokemonRepository = (function() {
 
 	//Allows modal to be closed on clicking div
 	$($modalContainer).click(function(e) {
-		// Since this is also triggered when clicking INSIDE the modal
+		// Since this is also triggered when clicking INSIDE the modal container,
 		// We only want to close if the user clicks directly on the overlay
 		var target = e.target;
-		if (target === $modalContainer && $modalContainer.hasClass('is-visible')) {
+		if (target != $modal) {
 			hideModal();
 		}
 	});
