@@ -83,17 +83,17 @@ var pokemonRepository = (function() {
 		var $modalName = $('<h1 class="pokemon-name">' + pokemon.name + '</h1>');
 		$('.modal').append($modalName);
 
-		var $modalPicture = $('<img class="pokemon-picture>');
-		$modalPicture.src = pokemon.imageUrl;
+		var $modalPicture = $('<img class="pokemon-picture"/>');
+		$modalPicture.attr('src', pokemon.imageUrl);
 
 		var $modalHeight = $('<p>Height: ' + pokemon.height / 10 + ' meters</p>');
 
 		var $modalWeight = $('<p>Weight: ' + (0.22 * pokemon.weight).toFixed(2) + ' pounds</p>');
 
 		// Closes modal with close button
-		var $closeButtonElement = '<button class="modal-close">Close</button>';
-		$('.modal-close').click(function() {
-			hideModal;
+		var $closeButtonElement = $('<button class="modal-close">Close</button>');
+		$($closeButtonElement).click(function() {
+			hideModal();
 		});
 
 		$modal.append($closeButtonElement);
@@ -117,11 +117,11 @@ var pokemonRepository = (function() {
 	});
 
 	//Allows modal to be closed on clicking div
-	$modalContainer.click(function(e) {
+	$($modalContainer).click(function(e) {
 		// Since this is also triggered when clicking INSIDE the modal
 		// We only want to close if the user clicks directly on the overlay
 		var target = e.target;
-		if (target === modalContainer) {
+		if (target === $modalContainer && $modalContainer.hasClass('is-visible')) {
 			hideModal();
 		}
 	});
