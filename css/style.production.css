@@ -43,10 +43,8 @@ h3 {
 	-webkit-text-fill-color: #ffc700;
 }
 
-ul {
-	list-style: none;
+.list-group-item {
 	background-color: rgba(46, 46, 46, 0.89);
-	border-radius: 15px;
 	padding: 5px;
 }
 

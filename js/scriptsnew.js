@@ -13,7 +13,7 @@ var pokemonRepository = (function() {
 	}
 
 	function addListItem(pokemon) {
-		var $listItem = $('<li></li>');
+		var $listItem = $('<li class="list-group-item"></li>');
 		$pokemonList.append($listItem);
 
 		var $button = $(
@@ -78,19 +78,7 @@ var pokemonRepository = (function() {
 	}
 
 	function showModal(pokemon) {
-		$modalContainer.html('');
-
-		var $modalDialog = $('<div class = "modal-dialog modal-dialog-centered" role="document"></div>');
-		$modalContainer.append($modalDialog);
-
-		var $modalContent = $('<div class="modal-content"></div>');
-		$modalDialog.append($modalContent);
-
-		var $modalHeader = $('<div class="modal-header"></div>');
-		$modalContent.append($modalHeader);
-
-		var $modalName = $('<h3 class="pokemon-name modal-title" >' + pokemon.name + '</h3>');
-		$modalHeader.append($modalName);
+		$('#pokemon-name').text(pokemon.name);
 
 		var $closeButtonElement = $(
 			'<button type="button" class="close btn" data-toggle="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
