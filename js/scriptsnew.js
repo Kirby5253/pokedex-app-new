@@ -78,25 +78,22 @@ var pokemonRepository = (function() {
 	}
 
 	function showModal(pokemon) {
+		var $modalBody = $('.modal-body');
+
+		//Add pokemon's name to the title of modal
 		$('#pokemon-name').text(pokemon.name);
 
-		var $closeButtonElement = $(
-			'<button type="button" class="close btn" data-toggle="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-		);
-		$modalHeader.append($closeButtonElement);
+		//Add pokemon's height and weight with breaks between for style
+		$modalBody.append('Height:' + pokemon.height / 10 + ' meters');
 
-		var $modalBody = $('<div class="modal-body"></div>');
-		$modalContent.append($modalBody);
+		$modalBody.append('<br/><br/>');
 
+		$modalBody.append('Weight: ' + (0.22 * pokemon.weight).toFixed(2) + ' pounds');
+
+		//Add pokemon's picture to the body
 		var $modalPicture = $('<img class="pokemon-picture"/>');
 		$modalPicture.attr('src', pokemon.imageUrl);
 		$modalBody.append($modalPicture);
-
-		var $modalHeight = $('<p>Height: ' + pokemon.height / 10 + ' meters</p>');
-		$modalBody.append($modalHeight);
-
-		var $modalWeight = $('<p>Weight: ' + (0.22 * pokemon.weight).toFixed(2) + ' pounds</p>');
-		$modalBody.append($modalWeight);
 	}
 
 	return {
