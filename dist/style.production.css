@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 
 * {
@@ -21,6 +28,7 @@ body {
 	max-width: 100%;
 	text-align: center;
 	letter-spacing: 5px;
+	-ms-flex-line-pack: center;
 	align-content: center;
 	margin-left: 110px;
 	margin-right: 100px;
@@ -62,6 +70,8 @@ h3 {
 
 .btn {
 	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	height: 100px;
 	border-radius: 15px;
@@ -71,7 +81,11 @@ h3 {
 	font-size: 30px;
 	margin-top: 0;
 	letter-spacing: 5px;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 	border-width: 7px;
 }
@@ -105,11 +119,8 @@ h3 {
 	color: white;
 }
 
+#pokemon-name,
 .pokemon-name {
-	text-transform: capitalize;
-}
-
-#pokemon-name {
 	text-transform: capitalize;
 }
 
@@ -134,11 +145,15 @@ img {
 }
 
 .navbar {
+	-webkit-box-align: end;
+	-ms-flex-align: end;
 	align-items: flex-end;
 }
 
 @media screen and (max-width: 1300px) {
 	.navbar {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 	}
 }
@@ -157,6 +172,8 @@ img {
 		letter-spacing: 1px;
 	}
 	.navbar {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 	}
 	.my-sm-0 {

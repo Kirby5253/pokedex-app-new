@@ -57,6 +57,9 @@ var pokemonRepository = (function() {
 				pokemon.imageUrl = details.sprites.front_default;
 				pokemon.height = details.height;
 				pokemon.weight = details.weight;
+				pokemon.types = details.types.map(function(object) {
+					return object.type.name;
+				});
 			})
 			.catch(function(e) {
 				console.error(e);
@@ -85,14 +88,24 @@ var pokemonRepository = (function() {
 
 		//Add pokemon's height and weight with breaks between for style
 		$modalBody.html(
-			'Height:' +
+			'Height: ' +
 				pokemon.height / 10 +
 				' meters' +
 				'<br/><br/>' +
 				'Weight: ' +
 				(0.22 * pokemon.weight).toFixed(2) +
-				' pounds'
+				' pounds' +
+				'<br/><br/>' +
+				'Type(s): ' +
+				'<span class="pokemon-types">' +
+				pokemon.types +
+				'</span>'
 		);
+
+		$('.modal-header').addClass(pokemon.types);
+		$('.close').click(() => {
+			$('.modal-header').removeClass(pokemon.types);
+		});
 
 		//Add pokemon's picture to the body
 		var $modalPicture = $('<img class="pokemon-picture"/>');
@@ -106,12 +119,20 @@ var pokemonRepository = (function() {
 		addListItem: addListItem,
 		showModal: showModal,
 		loadList: loadList,
-		loadDetails: loadDetails
+		loadDetails: loadDetails,
+		searchBar: searchBar
 	};
 })();
 
 pokemonRepository.loadList().then(function() {
 	pokemonRepository.getAll().forEach(function(pokemon) {
 		pokemonRepository.addListItem(pokemon);
+	});
+});
+
+$('#searchBar').on('keyup', function() {
+	var value = $(this).val().toLowerCase();
+	$('.pokemon-name').filter(function() {
+		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
 	});
 });
