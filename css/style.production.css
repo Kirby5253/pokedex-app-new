@@ -82,13 +82,20 @@ button:hover {
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5);
 	/* to show it above other content */
-	z-index: 999;
+	z-index: 500;
 	/* to allow scrolling if the screen is not high enough */
 	overflow: auto;
 	/* this is used to center the modal */
 	display: -ms-grid;
 	display: grid;
 	text-align: center;
+	cursor: pointer;
+}
+
+.modal-box {
+	margin-top: 273px;
+	cursor: initial;
+	z-index: 999;
 }
 
 .modal {
@@ -111,9 +118,8 @@ button:hover {
 	height: 10%;
 	background: none;
 	color: #dc0a2d;
-	text-decoration: underline;
 	margin-right: 20px;
-	font-size: 20px;
+	font-size: 40px;
 	font-family: "Lato";
 	letter-spacing: 0;
 }
@@ -128,7 +134,7 @@ button:hover {
 	background: #dc0a2d;
 	color: white;
 	margin-right: 20px;
-	font-size: 20px;
+	font-size: 40px;
 	font-family: "Lato";
 	letter-spacing: 0;
 	text-decoration: none;
@@ -152,19 +158,22 @@ img {
 		margin: auto;
 		font-size: 25px;
 	}
-	button {
+	button,
+	button:hover {
 		border-width: 7px;
 		font-size: 15px;
 		height: 50px;
 	}
 	button:hover {
 		letter-spacing: 5px;
-		border-width: 7px;
-		font-size: 15px;
-		height: 50px;
 	}
 	.modal {
 		font-size: 10px;
+		letter-spacing: 1px;
+	}
+	.modal-close,
+	.modal-close:hover {
+		font-size: 18px;
 		letter-spacing: 1px;
 	}
 }
