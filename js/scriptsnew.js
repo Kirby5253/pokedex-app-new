@@ -84,11 +84,15 @@ var pokemonRepository = (function() {
 		$('#pokemon-name').text(pokemon.name);
 
 		//Add pokemon's height and weight with breaks between for style
-		$modalBody.append('Height:' + pokemon.height / 10 + ' meters');
-
-		$modalBody.append('<br/><br/>');
-
-		$modalBody.append('Weight: ' + (0.22 * pokemon.weight).toFixed(2) + ' pounds');
+		$modalBody.html(
+			'Height:' +
+				pokemon.height / 10 +
+				' meters' +
+				'<br/><br/>' +
+				'Weight: ' +
+				(0.22 * pokemon.weight).toFixed(2) +
+				' pounds'
+		);
 
 		//Add pokemon's picture to the body
 		var $modalPicture = $('<img class="pokemon-picture"/>');
