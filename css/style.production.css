@@ -91,6 +91,10 @@ h3 {
 	height: 10px;
 	margin-right: 20px;
 	color: #dc0a2d;
+	padding-right: 29px;
+	padding-top: 9px;
+	padding-bottom: 27px;
+	border-radius: 15px;
 }
 
 .close:hover {
@@ -104,6 +108,10 @@ h3 {
 }
 
 .pokemon-name {
+	text-transform: capitalize;
+}
+
+#pokemon-name {
 	text-transform: capitalize;
 }
 
