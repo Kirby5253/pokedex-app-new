@@ -92,14 +92,12 @@ h3 {
 	margin-right: 20px;
 	color: #dc0a2d;
 	padding-right: 29px;
-	padding-top: 9px;
-	padding-bottom: 27px;
+	padding-top: 7px;
+	padding-bottom: 25px;
 	border-radius: 15px;
 }
 
 .close:hover {
-	height: 10px;
-	width: 10px;
 	border: 0;
 	cursor: pointer;
 	-webkit-appearance: none;
