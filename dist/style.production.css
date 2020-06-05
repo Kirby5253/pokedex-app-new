@@ -5,13 +5,6 @@
 * Browsers: last 4 version
 */
 
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 
 * {
@@ -28,7 +21,6 @@ body {
 	max-width: 100%;
 	text-align: center;
 	letter-spacing: 5px;
-	-ms-flex-line-pack: center;
 	align-content: center;
 	margin-left: 110px;
 	margin-right: 100px;
@@ -54,10 +46,11 @@ h3 {
 .list-group-item {
 	background-color: rgba(46, 46, 46, 0.89);
 	padding: 5px;
+	border-radius: 22px;
 }
 
 #modal-container {
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(0, 0, 0, 0.26);
 }
 
 .modal-content {
@@ -70,8 +63,6 @@ h3 {
 
 .btn {
 	width: 100%;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	height: 100px;
 	border-radius: 15px;
@@ -81,11 +72,7 @@ h3 {
 	font-size: 30px;
 	margin-top: 0;
 	letter-spacing: 5px;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
 	border-width: 7px;
 }
@@ -100,12 +87,99 @@ h3 {
 	-webkit-text-fill-color: #ffc700;
 }
 
+#pokemon-name,
+.pokemon-name,
+.pokemon-types {
+	text-transform: capitalize;
+}
+
+img {
+	width: 30%;
+	float: right;
+}
+
+.navbar {
+	flex-direction: column;
+	align-items: center;
+}
+
+.modal-header {
+	color: white;
+}
+.normal,
+.ground {
+	background-color: #a8a878;
+}
+
+.rock,
+.ground {
+	background-color: #e0c068;
+}
+.psychic {
+	background-color: #f85888;
+}
+
+.bug {
+	background-color: #a8b820;
+}
+
+.ghost {
+	background-color: #705898;
+}
+
+.poison {
+	background-color: #a040a0;
+	color: white;
+}
+
+.flying {
+	background-color: #a890f0;
+}
+
+.grass {
+	background-color: #78c850;
+}
+.fighting {
+	background-color: #c03028;
+}
+.fire {
+	background-color: #f08030;
+}
+
+.ice {
+	background-color: #98d8d8;
+}
+
+.dragon {
+	background-color: #7038f8;
+}
+
+.dark {
+	background-color: #705848;
+}
+
+.steel {
+	background-color: #b8b8d0;
+}
+
+.electric {
+	background-color: #f8d030;
+	color: black;
+}
+
+.water {
+	background-color: #6890f0;
+}
+
+.fairy {
+	background-color: #ff9be1;
+}
+
 .close {
-	width: 10px;
-	height: 10px;
-	margin-right: 20px;
-	color: #dc0a2d;
-	padding-right: 29px;
+	height: 50px;
+	width: 50px;
+	color: black;
+	padding-right: 50px;
 	padding-top: 7px;
 	padding-bottom: 25px;
 	border-radius: 15px;
@@ -119,42 +193,13 @@ h3 {
 	color: white;
 }
 
-#pokemon-name,
-.pokemon-name {
-	text-transform: capitalize;
+#searchBar {
+	width: max-content;
 }
 
-img {
-	width: 30%;
-	float: right;
-}
-
-.my-sm-0 {
-	width: 150px;
-	height: 50px;
-	font-size: 20px;
-	border: none;
-}
-
-.my-sm-0:hover {
-	width: 150px;
-	height: 50px;
-	font-size: 20px;
-	color: #ffc700;
-	-webkit-text-stroke: 0;
-}
-
-.navbar {
-	-webkit-box-align: end;
-	-ms-flex-align: end;
-	align-items: flex-end;
-}
-
-@media screen and (max-width: 1300px) {
-	.navbar {
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
-		justify-content: center;
+@media screen and (max-width: 1000px) {
+	#searchBar {
+		max-width: 700px;
 	}
 }
 
@@ -172,12 +217,7 @@ img {
 		letter-spacing: 1px;
 	}
 	.navbar {
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
 		justify-content: center;
-	}
-	.my-sm-0 {
-		width: 100%;
 	}
 	.form-control {
 		width: 100%;
