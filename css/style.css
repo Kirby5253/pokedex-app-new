@@ -23,6 +23,11 @@ body {
   right: 0;
   width: 50px;
   z-index: 100;
+  opacity: .5;
+}
+
+.github-link img:hover {
+  opacity: 1;
 }
 
 h1 {
