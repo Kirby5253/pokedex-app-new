@@ -1,0 +1,84 @@
+$groundNormal: #a8a878;
+$groundRock: #e0c068;
+$psychic: #f85888;
+$bug: #a8b820;
+$ghost: #705898;
+$poison: #a040a0;
+$flying: #a890f0;
+$grass: #78c850;
+$fighting: #c03028;
+$fire: #f08030;
+$ice: #98d8d8;
+$dragon: #7038f8;
+$dark: #705848;
+$steel: #b8b8d0;
+$electric: #f8d030;
+$water: #6890f0;
+$fairy: #ff9be1;
+
+.ground,
+.normal {
+  background: $groundNormal;
+}
+.ground,
+.rock {
+  background-color: $groundRock;
+}
+.psychic {
+  background-color: $psychic;
+}
+.bug {
+  background-color: $bug;
+}
+.ghost {
+  background-color: $ghost;
+}
+.poison {
+  background-color: $poison;
+  color: #fff;
+}
+.flying {
+  background-color: $flying;
+}
+.grass {
+  background-color: $grass;
+}
+.fighting {
+  background-color: $fighting;
+}
+.fire {
+  background-color: $fire;
+}
+.ice {
+  background-color: $ice;
+}
+.dragon {
+  background-color: $dragon;
+}
+.dark {
+  background-color: $dark;
+}
+.steel {
+  background-color: $steel;
+}
+.electric {
+  background-color: $electric;
+  color: #000;
+}
+.water {
+  background-color: $water;
+}
+.fairy {
+  background-color: $fairy;
+}
+
+#pokemon-name,
+.pokemon-name,
+.pokemon-types {
+  text-transform: capitalize;
+}
+
+.pokemon-picture {
+  width: 30%;
+  float: right;
+}

@@ -1,227 +1,310 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
-
 * {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-	font-family: "Pokemon", sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 1.6;
-	background-color: #dc0a2d;
-	max-width: 100%;
-	text-align: center;
-	letter-spacing: 5px;
-	align-content: center;
-	margin-left: 110px;
-	margin-right: 100px;
+  font-family: 'PT Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  background-color: #dc0a2d;
+  max-width: 100%;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin-left: 110px;
+  margin-right: 100px;
 }
 
 h1 {
-	font-size: 50px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	color: #ffc700;
-	-webkit-text-stroke: 2.5px #355aa9;
-	-webkit-text-fill-color: #ffc700;
+  font-family: "Pokemon", fantasy, sans-serif;
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #ffc700;
+  -webkit-text-stroke: 2.5px #355aa9;
+  -webkit-text-fill-color: #ffc700;
 }
 
 h3 {
-	font-size: 30px;
-	margin: 0;
-	color: #ffc700;
-	-webkit-text-stroke: 0.5px #355aa9;
-	-webkit-text-fill-color: #ffc700;
+  font-family: "Pokemon", fantasy, sans-serif;
+  font-size: 30px;
+  margin: 0;
+  color: #ffc700;
+  -webkit-text-stroke: .5px #355aa9;
+  -webkit-text-fill-color: #ffc700;
+}
+
+#pokeball-letter {
+  width: 50px;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Pokemon", fantasy, sans-serif;
+}
+
+.navbar .navbar-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+}
+
+.navbar .navbar-brand span {
+  font-size: 50px;
+  color: #ffc700;
+  -webkit-text-stroke: 2.5px #355aa9;
+  -webkit-text-fill-color: #ffc700;
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+}
+
+.pokemonSelectorButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100px;
+  border: none;
+  margin: 1px;
+  background: #111;
+  padding: 10px;
+  color: #f0f0f0;
+  font-size: 30px;
+  border: 1px solid #dddddd;
+  -webkit-transition: ease .5s;
+  transition: ease .5s;
+}
+
+.pokemonSelectorButton:hover {
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  color: yellow;
+  background: #dc0b2d;
+  letter-spacing: 10px;
 }
 
 .list-group-item {
-	background-color: rgba(46, 46, 46, 0.89);
-	padding: 5px;
-	border-radius: 22px;
+  background-color: rgba(46, 46, 46, 0.89);
+  padding: 5px;
+  border-radius: 22px;
 }
 
-#modal-container {
-	background: rgba(0, 0, 0, 0.26);
+#searchBar {
+  width: 100%;
+  margin: 0;
 }
 
-.modal-content {
-	background: rgb(218, 218, 218);
-	max-width: 700px;
-	text-align: left;
-	margin-left: 10px;
-	border-radius: 10px;
+#searchBar::-webkit-search-cancel-button {
+  display: none;
 }
 
-.btn {
-	width: 100%;
-	display: flex;
-	height: 100px;
-	border-radius: 15px;
-	background: rgba(0, 0, 0, 0.226);
-	padding: 10px;
-	color: rgb(240, 240, 240);
-	font-size: 30px;
-	margin-top: 0;
-	letter-spacing: 5px;
-	justify-content: center;
-	align-items: center;
-	border-width: 7px;
+.ground,
+.normal {
+  background: #a8a878;
 }
 
-.btn:hover {
-	width: 97%;
-	font-size: 35px;
-	letter-spacing: 10px;
-	cursor: pointer;
-	background: rgba(19, 19, 19, 0.274);
-	-webkit-text-stroke: 2.5px #355aa9;
-	-webkit-text-fill-color: #ffc700;
+.ground,
+.rock {
+  background-color: #e0c068;
+}
+
+.psychic {
+  background-color: #f85888;
+}
+
+.bug {
+  background-color: #a8b820;
+}
+
+.ghost {
+  background-color: #705898;
+}
+
+.poison {
+  background-color: #a040a0;
+  color: #fff;
+}
+
+.flying {
+  background-color: #a890f0;
+}
+
+.grass {
+  background-color: #78c850;
+}
+
+.fighting {
+  background-color: #c03028;
+}
+
+.fire {
+  background-color: #f08030;
+}
+
+.ice {
+  background-color: #98d8d8;
+}
+
+.dragon {
+  background-color: #7038f8;
+}
+
+.dark {
+  background-color: #705848;
+}
+
+.steel {
+  background-color: #b8b8d0;
+}
+
+.electric {
+  background-color: #f8d030;
+  color: #000;
+}
+
+.water {
+  background-color: #6890f0;
+}
+
+.fairy {
+  background-color: #ff9be1;
 }
 
 #pokemon-name,
 .pokemon-name,
 .pokemon-types {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 
-img {
-	width: 30%;
-	float: right;
-}
-
-.navbar {
-	flex-direction: column;
-	align-items: center;
-}
-
-.modal-header {
-	color: white;
-}
-.normal,
-.ground {
-	background-color: #a8a878;
-}
-
-.rock,
-.ground {
-	background-color: #e0c068;
-}
-.psychic {
-	background-color: #f85888;
-}
-
-.bug {
-	background-color: #a8b820;
-}
-
-.ghost {
-	background-color: #705898;
-}
-
-.poison {
-	background-color: #a040a0;
-	color: white;
-}
-
-.flying {
-	background-color: #a890f0;
-}
-
-.grass {
-	background-color: #78c850;
-}
-.fighting {
-	background-color: #c03028;
-}
-.fire {
-	background-color: #f08030;
-}
-
-.ice {
-	background-color: #98d8d8;
-}
-
-.dragon {
-	background-color: #7038f8;
-}
-
-.dark {
-	background-color: #705848;
-}
-
-.steel {
-	background-color: #b8b8d0;
-}
-
-.electric {
-	background-color: #f8d030;
-	color: black;
-}
-
-.water {
-	background-color: #6890f0;
-}
-
-.fairy {
-	background-color: #ff9be1;
-}
-
-.close {
-	height: 50px;
-	width: 50px;
-	color: black;
-	padding-right: 50px;
-	padding-top: 7px;
-	padding-bottom: 25px;
-	border-radius: 15px;
-}
-
-.close:hover {
-	border: 0;
-	cursor: pointer;
-	-webkit-appearance: none;
-	background: #dc0a2d;
-	color: white;
-}
-
-#searchBar {
-	width: max-content;
+.pokemon-picture {
+  width: 30%;
+  float: right;
 }
 
 @media screen and (max-width: 1000px) {
-	#searchBar {
-		max-width: 700px;
-	}
+  #searchBar {
+    max-width: 700px;
+  }
 }
 
 @media screen and (max-width: 700px) {
-	body {
-		margin-left: 20px;
-		margin-right: 10px;
-	}
-	h1 {
-		font-size: 25px;
-		-webkit-text-stroke: 1.5px #355aa9;
-	}
-	.modal {
-		font-size: 10px;
-		letter-spacing: 1px;
-	}
-	.navbar {
-		justify-content: center;
-	}
-	.form-control {
-		width: 100%;
-	}
+  body {
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+  h1 {
+    font-size: 25px;
+    -webkit-text-stroke: 1.5px #355aa9;
+  }
+  .modal {
+    font-size: 15px;
+  }
+  .navbar {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .form-control {
+    width: 100%;
+  }
 }
 
-@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+.landing-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
+  width: 100vw;
+}
+
+.landing-container img {
+  width: 1200px;
+}
+
+.modal-header {
+  color: white;
+}
+
+#modal-container {
+  background: rgba(0, 0, 0, 0.26);
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-content {
+  max-width: 700px;
+  text-align: left;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.close {
+  height: 50px;
+  width: 50px;
+  color: #000;
+  padding-right: 50px;
+  padding-top: 7px;
+  padding-bottom: 25px;
+  border-radius: 50%;
+}
+
+.close:hover {
+  border: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: #dc0a2d;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */
