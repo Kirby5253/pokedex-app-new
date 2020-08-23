@@ -4,6 +4,23 @@ var pokemonRepository = (function () {
 	var $pokemonList = $(".pokemon-list");
 	var $modalContainer = $("#modal-container");
 
+	function loadList() {
+		return $.ajax(apiUrl, {
+			dataType: "json",
+			success: function (responseJSON) {
+				responseJSON.results.forEach(function (item) {
+					var pokemon = {
+						name: item.name,
+						detailsUrl: item.url,
+					};
+					add(pokemon);
+				});
+			},
+		}).fail(function (e) {
+			console.error(e);
+		});
+	}
+
 	function add(pokemon) {
 		pokemonArray.push(pokemon);
 	}
@@ -28,23 +45,6 @@ var pokemonRepository = (function () {
 		});
 	}
 
-	function loadList() {
-		return $.ajax(apiUrl, {
-			dataType: "json",
-			success: function (responseJSON) {
-				responseJSON.results.forEach(function (item) {
-					var pokemon = {
-						name: item.name,
-						detailsUrl: item.url,
-					};
-					add(pokemon);
-				});
-			},
-		}).fail(function (e) {
-			console.error(e);
-		});
-	}
-
 	function loadDetails(pokemon) {
 		var url = pokemon.detailsUrl;
 		return $.ajax(url, {
@@ -60,20 +60,6 @@ var pokemonRepository = (function () {
 				pokemon.types = details.types.map(function (object) {
 					return object.type.name;
 				});
-			})
-			.catch(function (e) {
-				console.error(e);
-			});
-	}
-
-	function showDetails(pokemon) {
-		pokemonRepository
-			.loadDetails(pokemon)
-			.then(function () {
-				return pokemon;
-			})
-			.then(function (pokemon) {
-				showModal(pokemon);
 			})
 			.catch(function (e) {
 				console.error(e);
@@ -111,6 +97,20 @@ var pokemonRepository = (function () {
 		var $modalPicture = $('<img class="pokemon-picture"/>');
 		$modalPicture.attr("src", pokemon.imageUrl);
 		$modalBody.append($modalPicture);
+	}
+
+	function showDetails(pokemon) {
+		pokemonRepository
+			.loadDetails(pokemon)
+			.then(function () {
+				return pokemon;
+			})
+			.then(function (pokemon) {
+				showModal(pokemon);
+			})
+			.catch(function (e) {
+				console.error(e);
+			});
 	}
 
 	return {
