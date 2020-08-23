@@ -280,6 +280,16 @@ ul {
   float: right;
 }
 
+.landing-page {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .landing-container-title {
   position: absolute;
   width: -webkit-fit-content;
@@ -331,7 +341,7 @@ ul {
 .background-container__bottom {
   background-color: white;
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
   position: absolute;
   top: 50%;
 }
@@ -342,7 +352,7 @@ ul {
   width: 300px;
   border-radius: 12px;
   height: 5vh;
-  top: 20%;
+  top: 30%;
   color: #ffc700;
   -webkit-animation: fadeIn 3s;
           animation: fadeIn 3s;
@@ -351,6 +361,7 @@ ul {
 span.title-header__landing {
   font-size: 144px;
   color: #ffc700;
+  padding-right: 10px;
   letter-spacing: 10px;
   -webkit-text-stroke: 2.5px #355aa9;
   -webkit-text-fill-color: #ffc700;

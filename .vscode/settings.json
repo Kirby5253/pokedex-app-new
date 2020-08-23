@@ -4,5 +4,6 @@
     "Pokédex",
     "dex",
     "onlinewebfonts"
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }
