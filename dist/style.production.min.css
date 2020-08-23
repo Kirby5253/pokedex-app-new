@@ -49,6 +49,9 @@ h3 {
 	margin-left: 10px;
 	border-radius: 10px;
 }
+.modal-body {
+	font-family: "Poppins", sans-serif;
+}
 .btn {
 	width: 100%;
 	display: flex;
@@ -152,7 +155,7 @@ img {
 	padding-right: 50px;
 	padding-top: 7px;
 	padding-bottom: 25px;
-	border-radius: 15px;
+	border-radius: 50%;
 }
 .close:hover {
 	border: 0;

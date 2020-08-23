@@ -1,8 +1,25 @@
-var pokemonRepository = (function() {
+var pokemonRepository = (function () {
 	var pokemonArray = [];
-	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-	var $pokemonList = $('.pokemon-list');
-	var $modalContainer = $('#modal-container');
+	var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+	var $pokemonList = $(".pokemon-list");
+	var $modalContainer = $("#modal-container");
+
+	function loadList() {
+		return $.ajax(apiUrl, {
+			dataType: "json",
+			success: function (responseJSON) {
+				responseJSON.results.forEach(function (item) {
+					var pokemon = {
+						name: item.name,
+						detailsUrl: item.url,
+					};
+					add(pokemon);
+				});
+			},
+		}).fail(function (e) {
+			console.error(e);
+		});
+	}
 
 	function add(pokemon) {
 		pokemonArray.push(pokemon);
@@ -19,98 +36,81 @@ var pokemonRepository = (function() {
 		var $button = $(
 			'<button class="btn btn-light pokemon-name pokemonSelectorButton" data-toggle="modal" data-target="#modal-container">' +
 				pokemon.name +
-				'</button>'
+				"</button>"
 		);
 		$listItem.append($button);
 
-		$button.click(function() {
+		$button.click(function () {
 			showDetails(pokemon);
-		});
-	}
-
-	function loadList() {
-		return $.ajax(apiUrl, {
-			dataType: 'json',
-			success: function(responseJSON) {
-				responseJSON.results.forEach(function(item) {
-					var pokemon = {
-						name: item.name,
-						detailsUrl: item.url
-					};
-					add(pokemon);
-				});
-			}
-		}).fail(function(e) {
-			console.error(e);
 		});
 	}
 
 	function loadDetails(pokemon) {
 		var url = pokemon.detailsUrl;
 		return $.ajax(url, {
-			dataType: 'json'
+			dataType: "json",
 		})
-			.then(function(responseJSON) {
+			.then(function (responseJSON) {
 				return responseJSON;
 			})
-			.then(function(details) {
-				pokemon.imageUrl = details.sprites.front_default;
+			.then(function (details) {
+				pokemon.imageUrl = details.sprites.other.dream_world.front_default;
 				pokemon.height = details.height;
 				pokemon.weight = details.weight;
-				pokemon.types = details.types.map(function(object) {
+				pokemon.types = details.types.map(function (object) {
 					return object.type.name;
 				});
 			})
-			.catch(function(e) {
-				console.error(e);
-			});
-	}
-
-	function showDetails(pokemon) {
-		pokemonRepository
-			.loadDetails(pokemon)
-			.then(function() {
-				return pokemon;
-			})
-			.then(function(pokemon) {
-				showModal(pokemon);
-			})
-			.catch(function(e) {
+			.catch(function (e) {
 				console.error(e);
 			});
 	}
 
 	function showModal(pokemon) {
-		var $modalBody = $('.modal-body');
+		var $modalBody = $(".modal-body");
 
 		//Add pokemon's name to the title of modal
-		$('#pokemon-name').text(pokemon.name);
+		$("#pokemon-name").text(pokemon.name);
 
 		//Add pokemon's height and weight with breaks between for style
 		$modalBody.html(
-			'Height: ' +
+			"Height: " +
 				pokemon.height / 10 +
-				' meters' +
-				'<br/><br/>' +
-				'Weight: ' +
+				" meters" +
+				"<br/><br/>" +
+				"Weight: " +
 				(0.22 * pokemon.weight).toFixed(2) +
-				' pounds' +
-				'<br/><br/>' +
-				'Type(s): ' +
+				" pounds" +
+				"<br/><br/>" +
+				"Type(s): " +
 				'<span class="pokemon-types">' +
 				pokemon.types +
-				'</span>'
+				"</span>"
 		);
 
-		$('.modal-header').addClass(pokemon.types);
-		$('.close').click(() => {
-			$('.modal-header').removeClass(pokemon.types);
+		$(".modal-header").addClass(pokemon.types);
+		$(".close").click(() => {
+			$(".modal-header").removeClass(pokemon.types);
 		});
 
 		//Add pokemon's picture to the body
 		var $modalPicture = $('<img class="pokemon-picture"/>');
-		$modalPicture.attr('src', pokemon.imageUrl);
+		$modalPicture.attr("src", pokemon.imageUrl);
 		$modalBody.append($modalPicture);
+	}
+
+	function showDetails(pokemon) {
+		pokemonRepository
+			.loadDetails(pokemon)
+			.then(function () {
+				return pokemon;
+			})
+			.then(function (pokemon) {
+				showModal(pokemon);
+			})
+			.catch(function (e) {
+				console.error(e);
+			});
 	}
 
 	return {
@@ -120,19 +120,19 @@ var pokemonRepository = (function() {
 		showModal: showModal,
 		loadList: loadList,
 		loadDetails: loadDetails,
-		searchBar: searchBar
+		searchBar: searchBar,
 	};
 })();
 
-pokemonRepository.loadList().then(function() {
-	pokemonRepository.getAll().forEach(function(pokemon) {
+pokemonRepository.loadList().then(function () {
+	pokemonRepository.getAll().forEach(function (pokemon) {
 		pokemonRepository.addListItem(pokemon);
 	});
 });
 
-$('#searchBar').on('keyup', function() {
+$("#searchBar").on("keyup", function () {
 	var value = $(this).val().toLowerCase();
-	$('.pokemon-name').filter(function() {
+	$(".pokemon-name").filter(function () {
 		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
 	});
 });
