@@ -4,42 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <link href="//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="shortcut icon" href="img/favicon-32x32.png" />
-  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>Pokédex JS App</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark">
-    <a class="navbar-brand">
-      <span>P<img id="pokeball-letter" src="img/pokeball.svg" alt="">kéDex</span>
+  <div class="landing-container">
+    <header>
+      <nav class="navbar navbar-dark">
+        <a class="navbar-brand">
+          <span>P<img id="pokeball-letter" src="img/pokeball.svg" alt="">kéDex</span>
 
-      Gotta catch 'em all!
-    </a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" id="searchBar" placeholder="Search" aria-label="Search">
-    </form>
-  </nav>
-  <div class="main-div">
-    <ul class="pokemon-list list-group"></ul>
+          Gotta catch 'em all!
+        </a>
+
+      </nav>
+    </header>
+    <img src="img/pokeball-5128709.jpg" alt="">
   </div>
-  <div class="modal fade main-div" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="pokemon-name" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="pokemon-name"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body"></div>
-      </div>
-    </div>
-  </div>
+
   <!-- Legacy browser Support -->
   <script src="js/promise-polyfill.js"></script>
   <script src="js/fetch.umd.js"></script>

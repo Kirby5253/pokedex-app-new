@@ -1,0 +1,24 @@
+@media screen and (max-width: 1000px) {
+  #searchBar {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body {
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+  h1 {
+    font-size: 25px;
+    -webkit-text-stroke: 1.5px #355aa9;
+  }
+  .modal {
+    font-size: 15px;
+  }
+  .navbar {
+    justify-content: center;
+  }
+  .form-control {
+    width: 100%;
+  }
+}

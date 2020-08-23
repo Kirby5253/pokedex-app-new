@@ -1,0 +1,33 @@
+.modal-header {
+  color: white;
+}
+
+#modal-container {
+  background: rgba(0, 0, 0, .26);
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-content {
+  max-width: 700px;
+  text-align: left;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.close {
+  height: 50px;
+  width: 50px;
+  color: #000;
+  padding-right: 50px;
+  padding-top: 7px;
+  padding-bottom: 25px;
+  border-radius: 50%;
+  &:hover {
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: #dc0a2d;
+    color: #fff;
+  }
+}
