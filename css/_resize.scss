@@ -4,10 +4,6 @@
   }
 }
 @media screen and (max-width: 700px) {
-  body {
-    margin-left: 20px;
-    margin-right: 10px;
-  }
   h1 {
     font-size: 25px;
     -webkit-text-stroke: 1.5px #355aa9;
@@ -20,5 +16,29 @@
   }
   .form-control {
     width: 100%;
+  }
+  .navbar {
+    margin: 10px 0;
+    .navbar-brand {
+      span.title-header {
+        font-size: 80px;
+        color: #ffc700;
+      }
+      span.title-subheader {
+        font-size: 30px;
+      }
+    }
+  }
+  span.title-header__landing {
+    font-size: 80px;
+    color: #ffc700;
+    letter-spacing: 10px;
+    -webkit-text-stroke: 2.5px $pokemonBlue;
+    -webkit-text-fill-color: $pokemonYellow;
+    #pokeball-letter {
+      width: 50px;
+      position: relative;
+      left: 4px;
+    }
   }
 }

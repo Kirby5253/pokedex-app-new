@@ -17,30 +17,37 @@
 </head>
 
 <body>
-  <div class="landing-container-title">
-    <div class="navbar navbar-dark">
-      <a class="navbar-brand landing-title" href="index.html">
-        <span class="title-header__landing">P<img id="pokeball-letter" src="img/pokeball.svg" alt="">kéDex</span>
+  <div class="app-container">
+
+    <a href="https://github.com/Kirby5253/pokedex-app-new" class="github-link">
+      <img src="img/github.svg" alt="github"></a>
+    <nav class="navbar navbar-dark">
+      <a class="navbar-brand" href="index.html">
+        <span class="title-header">P<img id="pokeball-letter" src="img/pokeball.svg" alt="">kéDex</span>
 
         <span class="title-subheader">Gotta catch 'em all!</span>
       </a>
+      <form class="form-inline">
+        <input class="form-control" type="search" id="searchBar" placeholder="Search" aria-label="Search">
+      </form>
+    </nav>
+    <div class="main-div">
+      <ul class="pokemon-list list-group"></ul>
+    </div>
+    <div class="modal fade main-div" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="pokemon-name" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pokemon-name"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"></div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="background-container__bar"></div>
-  <div class="background-container__outer-circle">
-    <div class="background-container__inner-circle">
-
-    </div>
-  </div>
-
-
-  <div class="background-container__bottom">
-    <a href="app.html" class="begin-btn_container btn">Begin your journey.</a>
-
-  </div>
-
-
   <!-- Legacy browser Support -->
   <script src="js/promise-polyfill.js"></script>
   <script src="js/fetch.umd.js"></script>
