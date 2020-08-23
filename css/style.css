@@ -22,6 +22,7 @@ body {
   position: absolute;
   right: 0;
   width: 50px;
+  z-index: 100;
 }
 
 h1 {
@@ -157,6 +158,7 @@ ul {
 #searchBar {
   width: 100%;
   margin: 0;
+  font-family: "PT Mono", monospace;
 }
 
 #searchBar .form-control {
@@ -275,7 +277,9 @@ ul {
 
 .landing-container-title {
   position: absolute;
-  padding-right: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   left: 50%;
   top: 18%;
   -webkit-transform: translate(-50%, -50%);
@@ -290,20 +294,21 @@ ul {
   height: 5vh;
   position: absolute;
   top: 48%;
+  z-index: 1;
 }
 
-.background-container__outer-circle,
-.background-container__inner-circle {
+.background-container__outer-circle {
   background-color: white;
   width: 180px;
   height: 180px;
   border-radius: 50%;
   border: 10px solid black;
+  z-index: 1;
   position: absolute;
-  top: 41%;
   left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .background-container__inner-circle {
@@ -322,7 +327,6 @@ ul {
   background-color: white;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
   position: absolute;
   top: 50%;
 }
